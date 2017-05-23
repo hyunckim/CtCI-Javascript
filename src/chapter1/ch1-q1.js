@@ -13,7 +13,7 @@
 export function hasUniqueCharactersSet(str) {
   let chars = new Set();
 
-  for (let i = 0; i < str.length; ++i) {
+  for (let i =0; i < str.length; i++) {
     if (chars.has(str[i])) {
       return false;
     }
@@ -34,11 +34,10 @@ export function hasUniqueCharactersSet(str) {
  * @return {boolean}      True if unique characters, otherwise false
  */
 export function hasUniqueCharactersSort(str) {
-  // sort string using quicksort
   str.sort();
 
-  for (var i = 1; i < str.length; ++i) {
-    if (str[i] === str[i - 1]) {
+  for (let i =0; i < str.length - 1; i++) {
+    if (str[i] === str[i + 1]) {
       return false;
     }
   }
