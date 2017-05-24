@@ -57,4 +57,12 @@ export function isPermutationMap(str1, str2) {
  */
 export function isPermutationSorted(str1, str2) {
 
+  if (str1.length === 0 || str1.length !== str2.length) {
+    return false;
+  }
+
+  str1.sort();
+  str2.sort();
+
+  return str1.join() === str2.join();
 }
