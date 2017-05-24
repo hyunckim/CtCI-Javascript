@@ -14,6 +14,33 @@
  * @return {boolean}       True if first and second strings are permutations otherwise false
  */
 export function isPermutationMap(str1, str2) {
+
+  if (str1.length === 0 || str1.length !== str2.length) {
+    return false;
+  }
+
+  let chars = {};
+
+  for (let i = 0; i < str1.length; i++) {
+    chars[str1[i]] = chars[str1[i]] + 1 || 1;
+  }
+
+  for (let j = 0; j < str2.length; j++) {
+    let count = chars[str2[j]];
+    if (!count) { return false; }
+    else {
+      if (count === 0) {
+        return false;
+      }
+      if (count === 1) {
+        delete chars[str2[j]];
+      }
+      else {
+        chars[str2[j]] -= 1;
+      }
+    }
+  }
+  return Object.keys(chars).length === 0;
 }
 
 /**
@@ -29,4 +56,5 @@ export function isPermutationMap(str1, str2) {
  * @return {boolean}       True if first and second strings are permutations otherwise false
  */
 export function isPermutationSorted(str1, str2) {
+
 }
