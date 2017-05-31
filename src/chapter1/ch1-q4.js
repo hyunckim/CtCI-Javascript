@@ -17,15 +17,13 @@ export function isPalindromePermutationsSet(str) {
     return false;
   }
 
-  let chars = new Set();
+  let chars  = new Set();
+
   for (let char of str) {
-    if (char !== ' ') { // ignore spaces
+    if (char !== ' ') {
       if (chars.has(char)) {
         chars.delete(char);
-      }
-      else {
-        chars.add(char);
-      }
+      } else { chars.add(char); }
     }
   }
 
