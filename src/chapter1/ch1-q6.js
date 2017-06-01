@@ -22,12 +22,10 @@ export function compressString(str) {
     let char = str[i],
       start = i;
 
-    while (i + 1 < str.length && str[i] === char) {
+    while (i + 1 < str.length && char === str[i + 1]) {
       i++;
     }
-
     cStr += (i - start + 1) + char;
   }
-
-  return cStr >= str ? str : cSter;
+  return cStr.length >= str.length ? str : cStr;
 }
