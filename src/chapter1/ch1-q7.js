@@ -15,4 +15,37 @@
  */
 export function rotateMatrix(matrix) {
 
+
+
+  if (!matrix || matrix.length === 0 || matrix.length !== matrix[0].length) {
+    throw new Error('invalid matrix');
+  }
+
+  if (matrix.length < 2) {
+    return matrix;
+  }
+
+  let len = matrix.length - 1,
+    half = Math.floor(matrix.length / 2);
+
+  for (let start = 0; start < half; start++) {
+    for (let i = 0; i < len - (start * 2); ++i) {
+      let y = start,
+        x = start + i,
+        prev = matrix[y][x];
+
+      // loop through all 4 corners
+      for (let j = 0; j < 4; ++j) {
+        let nextY = x,
+          nextX = len - y,
+          next = matrix[nextY][nextX];
+        matrix[nextY][nextX] = prev;
+        prev = next;
+        x = nextX;
+        y = nextY;
+      }
+    }
+  }
+
+  return matrix;
 }
