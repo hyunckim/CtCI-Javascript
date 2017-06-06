@@ -13,4 +13,5 @@ import { createNode } from './helpers';
  * general, additional space is used to create the new list.
  */
 export function sumListsReverseOrder(list1, list2) {
+  
 }
