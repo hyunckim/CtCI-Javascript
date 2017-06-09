@@ -14,6 +14,33 @@ import { getLength } from './helpers';
  * Additional space: O(N)
  */
 export function isPalindromeStack(list) {
+  let length = getLength(list);
+
+ if (length <= 1) {
+   return true;
+ }
+
+ let stack = [],
+   node = list;
+ for (let i = Math.floor(length / 2); i > 0; --i) {
+   stack.push(node.val);
+   node = node.next;
+ }
+
+ if ((length % 2) === 1) {
+   node = node.next;
+ }
+
+ while (node) {
+   if (node.val !== stack.pop()) {
+     return false;
+   }
+   node = node.next;
+ }
+ // since we only put half the items on the stack it shouldn't be possible
+ // for there to be anything left in the stack so it should always be empty
+ // as such this check isn't really necessary and this could just be return true
+ return stack.length === 0;
 }
 
 /**
