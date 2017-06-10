@@ -57,6 +57,41 @@ export function isPalindromeStack(list) {
  * Additional space: O(1)
  */
 export function isPalindromeReverse(list) {
+  let length = getLength(list);
+
+  if (length <= 1) {
+    return true;
+  }
+
+  let node = list,
+    half = Math.floor(length / 2),
+    mid;
+  for (let i = half; i > 0; --i) {
+    mid = node;
+    node = node.next;
+  }
+
+  if ((length % 2) === 1) {
+    mid = node;
+    node = node.next;
+  }
+
+  let tail = reverse(node, mid),
+    isPalindrome = true,
+    prev = null,
+    next;
+  // now walk from start to middle and end to middle comparing values
+  node = list;
+  for (let i = half; i > 0; --i) {
+    isPalindrome = isPalindrome && node.val === tail.val;
+    next = tail.next;
+    tail.next = prev;
+    prev = tail;
+    tail = next;
+    node = node.next;
+  }
+
+  return isPalindrome;
 }
 
 function reverse(node, end) {
