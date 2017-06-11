@@ -95,4 +95,13 @@ export function isPalindromeReverse(list) {
 }
 
 function reverse(node, end) {
+  let prev = end,
+    next;
+  while (node) {
+    next = node.next;
+    node.next = prev;
+    prev = node;
+    node = next;
+  }
+  return prev;
 }
