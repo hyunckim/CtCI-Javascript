@@ -43,4 +43,9 @@ function skip(list, num) {
 }
 
 function skip(list, num) {
+  while (num > 0) {
+   list = list.next;
+   --num;
+ }
+ return list;
 }
