@@ -10,6 +10,18 @@
  * Additional space: O(N)
  */
 export function findStartOfLoopSet(list) {
+  let visited = new Set(),
+  node = list;
+
+  while (node) {
+    if (visited.has(node)) {
+      return node;
+    }
+    visited.add(node);
+    node = node.next;
+  }
+
+  return null;
 }
 
 /**
