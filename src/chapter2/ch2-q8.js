@@ -38,4 +38,30 @@ export function findStartOfLoopSet(list) {
  * Additional space: O(1)
  */
 export function findStartOfLoop(list) {
+  if (!list) {
+    return null;
+  }
+
+  let slow = list,
+    fast = list;
+
+  while (slow.next && fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (fast === slow) {
+      break;
+    }
+  }
+
+  if (!slow || slow !== fast) { // no loop
+    return null;
+  }
+
+  slow = list;
+  while (slow !== fast) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  return fast;
 }
